@@ -8,26 +8,28 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; frame-src 'self' blob:; connect-src 'self' https: blob:; base-uri 'none'; form-action 'self'; object-src 'none'">
 <title>NEXUS ออนไลน์</title>
-<link rel="icon" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.jpg">
+<link rel="apple-touch-icon" href="icon.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="bar"><img src="icon.png" alt=""><b>NEXUS</b><span id="stamp" class="desk"></span><button id="lock" type="button" hidden>ล็อก</button></header>
+<header class="bar"><img src="icon.jpg" alt=""><b>NEXUS</b><img class="emblem" src="emblem.jpg" alt="ตรา บก.สส.ภ.1"><span id="stamp" class="desk"></span><button id="lock" type="button" hidden>ล็อก</button></header>
 <main>
  <section id="setup" class="panel" hidden>
   <h1>ยังไม่ได้ตั้งค่าเว็บ</h1>
   <p class="muted">ต้องใส่ Client ID ของแอป Microsoft ใน <code>config.js</code> ก่อนใช้งาน (ดูคู่มือในโฟลเดอร์ web)</p>
  </section>
  <section id="signin" class="panel" hidden>
+  <div class="hero"><img src="emblem.jpg" alt="ตรา บก.สส.ภ.1"><div><b>กก.สส.3 บก.สส.ภ.1</b><span>ข้อมูลเพื่อการสืบสวนและติดตามตัว • ใช้ในราชการเท่านั้น</span></div></div>
   <h1>NEXUS ออนไลน์</h1>
   <p class="muted">ขั้นที่ 1: เข้าสู่ระบบด้วยบัญชี Microsoft ที่ใช้ OneDrive ของ NEXUS</p>
   <button id="msLogin" type="button" class="wide">เข้าสู่ระบบ Microsoft</button>
   <p id="signinMsg" class="msg" aria-live="polite"></p>
  </section>
  <section id="unlock" class="panel" hidden>
+  <div class="hero"><img src="emblem.jpg" alt="ตรา บก.สส.ภ.1"><div><b>กก.สส.3 บก.สส.ภ.1</b><span>ข้อมูลเพื่อการสืบสวนและติดตามตัว • ใช้ในราชการเท่านั้น</span></div></div>
   <h1>ใส่รหัสเว็บ</h1>
   <p class="muted">ขั้นที่ 2: รหัสเว็บที่ตั้งไว้ในคอม (เครื่องมือ → 🌐 เว็บออนไลน์)</p>
   <form id="unlockForm"><input id="pw" type="password" autocomplete="current-password" placeholder="รหัสเว็บ" required><button type="submit">เปิด</button></form>
@@ -43,12 +45,25 @@
  <section id="detail" class="panel" hidden>
   <button id="back" type="button" class="back">← กลับ</button>
   <div class="actions">
-   <a id="lineShare" class="line" href="#" target="_blank" rel="noopener">ส่งต่อ LINE</a>
+   <button id="lineShare" type="button" class="line">ส่งต่อ LINE</button>
    <button id="copy" type="button">คัดลอกข้อความ</button>
+   <button id="editBtn" type="button" class="edit-btn">✏️ แก้ไข</button>
   </div>
+  <p id="pendNote" class="pend-note" hidden></p>
+  <div id="edit" hidden></div>
   <div id="files" class="files"></div>
   <div id="card"></div>
  </section>
+ <div id="shareSheet" class="sheet" hidden>
+  <div class="sheet-box" role="dialog" aria-label="ส่งต่อ LINE">
+   <b>ส่งต่อ LINE</b>
+   <button id="shareText" type="button" class="line">💬 แชร์ข้อความ</button>
+   <button id="shareImage" type="button" class="line">🖼️ แชร์ภาพเป้า</button>
+   <p id="shareNoImg" class="msg" hidden>ภาพเป้าจะมีหลังอัปเดตโปรแกรม NEXUS ในคอม</p>
+   <p class="hint">แชร์ภาพ: เลือก LINE ในหน้าต่างแชร์ของมือถือ</p>
+   <button id="shareClose" type="button" class="ghost">ปิด</button>
+  </div>
+ </div>
  <section id="viewer" class="viewer" hidden>
   <div class="viewer-bar"><button id="viewerBack" type="button" class="back">← กลับ</button><b id="viewerTitle"></b><a id="viewerDl" class="dl" href="#" download>⬇️ ดาวน์โหลด</a></div>
   <div id="viewerBody" class="viewer-body"></div>
