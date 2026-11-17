@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10294B">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; frame-src 'self' blob:; connect-src 'self' https: blob:; base-uri 'none'; form-action 'self'; object-src 'none'">
+<title>NEXUS ออนไลน์</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar"><img src="icon.png" alt=""><b>NEXUS</b><span id="stamp" class="desk"></span><button id="lock" type="button" hidden>ล็อก</button></header>
+<main>
+ <section id="setup" class="panel" hidden>
+  <h1>ยังไม่ได้ตั้งค่าเว็บ</h1>
+  <p class="muted">ต้องใส่ Client ID ของแอป Microsoft ใน <code>config.js</code> ก่อนใช้งาน (ดูคู่มือในโฟลเดอร์ web)</p>
+ </section>
+ <section id="signin" class="panel" hidden>
+  <h1>NEXUS ออนไลน์</h1>
+  <p class="muted">ขั้นที่ 1: เข้าสู่ระบบด้วยบัญชี Microsoft ที่ใช้ OneDrive ของ NEXUS</p>
+  <button id="msLogin" type="button" class="wide">เข้าสู่ระบบ Microsoft</button>
+  <p id="signinMsg" class="msg" aria-live="polite"></p>
+ </section>
+ <section id="unlock" class="panel" hidden>
+  <h1>ใส่รหัสเว็บ</h1>
+  <p class="muted">ขั้นที่ 2: รหัสเว็บที่ตั้งไว้ในคอม (เครื่องมือ → 🌐 เว็บออนไลน์)</p>
+  <form id="unlockForm"><input id="pw" type="password" autocomplete="current-password" placeholder="รหัสเว็บ" required><button type="submit">เปิด</button></form>
+  <p id="unlockMsg" class="msg" aria-live="polite"></p>
+  <button id="signout" type="button" class="link">ออกจากบัญชี Microsoft</button>
+ </section>
+ <section id="search" class="panel" hidden>
+  <form id="searchForm" class="searchbox"><input id="q" type="search" placeholder="ค้นชื่อ / เลขบัตร / เลขหมาย / เบอร์" autocomplete="off"><button type="submit">ค้นหา</button></form>
+  <div id="filters" class="chips"></div>
+  <p id="searchMsg" class="msg" aria-live="polite"></p>
+  <ul id="results" class="results"></ul>
+ </section>
+ <section id="detail" class="panel" hidden>
+  <button id="back" type="button" class="back">← กลับ</button>
+  <div class="actions">
+   <a id="lineShare" class="line" href="#" target="_blank" rel="noopener">ส่งต่อ LINE</a>
+   <button id="copy" type="button">คัดลอกข้อความ</button>
+  </div>
+  <div id="files" class="files"></div>
+  <div id="card"></div>
+ </section>
+ <section id="viewer" class="viewer" hidden>
+  <div class="viewer-bar"><button id="viewerBack" type="button" class="back">← กลับ</button><b id="viewerTitle"></b><a id="viewerDl" class="dl" href="#" download>⬇️ ดาวน์โหลด</a></div>
+  <div id="viewerBody" class="viewer-body"></div>
+  <a id="viewerOpen" class="viewer-open" href="#" target="_blank" rel="noopener">เปิดเต็มจอ (ถ้าดูไม่ครบหน้า)</a>
+ </section>
+</main>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

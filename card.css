@@ -1,0 +1,34 @@
+/* NEXUS v2.1.3 — แชร์เป้าหมาย / ส่ง LINE */
+.v213-open-button{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:6px 14px;margin-left:6px;border:1px solid #06C755;border-radius:10px;background:#06C755;color:#fff;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}
+.v213-open-button:hover{filter:brightness(.95)}
+.v213-dialog{width:min(980px,96vw);max-height:94vh;padding:20px 22px;box-sizing:border-box;border:0;border-radius:16px;overflow:auto;color:#10294b;background:#fff}
+.v213-dialog::backdrop{background:rgba(7,20,40,.55)}
+.v213-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.v213-top h2{margin:0;font-size:22px}
+.v213-close{border:0;background:#eef3fa;border-radius:10px;width:38px;height:38px;font-size:18px;cursor:pointer}
+.v213-hint{margin:6px 0 10px;color:#4a5d75;font-size:14px}
+.v213-opts{display:flex;flex-wrap:wrap;gap:6px 14px;padding:8px 10px;border:1px solid #d7e2f1;border-radius:10px;background:#f8fbff;font-size:14px}
+.v213-opts label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.v213-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.v213-actions button,.v213-files button{min-height:40px;padding:6px 14px;border:1px solid #c9d7eb;border-radius:10px;background:#fff;color:#10294b;font:inherit;font-weight:600;cursor:pointer}
+.v213-actions button.primary{background:#06C755;border-color:#06C755;color:#fff}
+.v213-actions button:disabled{opacity:.6;cursor:progress}
+.v213-files{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;font-size:14px}
+.v213-files button{font-weight:500;min-height:34px;padding:4px 10px}
+.v213-preview{border-top:1px solid #e3eaf4;padding-top:12px}
+.v213-card{max-width:720px;margin:0 auto;border-radius:14px;overflow:hidden;background:#f4f7fb;border:1px solid #d7e2f1;font-size:16px;line-height:1.55}
+.v213-head{display:flex;gap:16px;align-items:flex-start;padding:18px;background:#10294B;color:#fff;border-bottom:5px solid #d6a640}
+.v213-head h2{margin:0 0 4px!important;font-size:24px!important;color:#fff!important;-webkit-text-fill-color:#fff}
+.v213-head p{margin:2px 0;color:#d9e4f5!important}
+.v213-photo{flex:0 0 110px;height:136px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden}
+.v213-photo img{width:100%;height:100%;object-fit:cover}
+.v213-chips span{display:inline-block;margin:4px 6px 0 0;padding:2px 10px;border-radius:999px;background:#d6a640;color:#10294B;font-weight:700;font-size:14px}
+.v213-sec{margin:10px;padding:10px 14px;background:#fff;border-radius:10px}
+.v213-sec h3{margin:0 0 6px;font-size:17px;color:#185FA5}
+.v213-sec ul{margin:0;padding-left:18px}
+.v213-sec li{margin:4px 0}
+.v213-sec a{color:#185FA5}
+.v213-map{display:inline-block;margin-top:2px;padding:2px 10px;border-radius:999px;background:#e8f1fd;text-decoration:none;font-weight:600;font-size:14px}
+.v213-card footer{padding:8px 14px 12px;color:#61758a;font-size:13px}
+@media (max-width:600px){.v213-head{flex-direction:column}.v213-photo{flex-basis:auto;width:110px}}
+@media print{.v213-print .v213-card{border:0;max-width:none}.v213-print .v213-sec{break-inside:avoid}}

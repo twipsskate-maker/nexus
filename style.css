@@ -1,0 +1,61 @@
+:root{--navy:#10294B;--blue:#185FA5;--gold:#d6a640;--bg:#eef3f9;--line:#06C755}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,system-ui,sans-serif;font-size:16px;-webkit-text-size-adjust:100%}
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top));background:var(--navy);color:#fff}
+.bar img{width:26px;height:26px;border-radius:6px}
+.bar b{font-size:18px}
+.desk{margin-left:auto;font-size:13px}
+.desk.ok{color:#7ee2a8}.desk.off{color:#ffb4b4}
+.bar button{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:8px;padding:4px 10px;font:inherit;font-size:14px}
+main{max-width:760px;margin:0 auto;padding:14px 14px 40px}
+.panel h1{font-size:22px;margin:24px 0 4px}
+.muted{color:#4a5d75;margin:0 0 14px}
+form{display:flex;gap:8px}
+input{flex:1;min-width:0;min-height:46px;padding:8px 12px;border:1px solid #c9d7eb;border-radius:12px;font:inherit;font-size:17px;background:#fff}
+button,.line{min-height:46px;padding:8px 16px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:inherit;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.msg{color:#4a5d75;margin:10px 2px}
+.results{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.results button{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:#fff;color:var(--navy);border:1px solid #d7e2f1;font-weight:500;padding:12px 14px}
+.results b{font-size:17px}
+.results span{font-size:14px;color:#4a5d75}
+.results .st{color:var(--blue)}
+.back{background:#fff;color:var(--navy);border:1px solid #c9d7eb;min-height:40px;margin-bottom:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.actions .line{background:var(--line)}
+.actions button{background:#fff;color:var(--navy);border:1px solid #c9d7eb}
+.files{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.files a{display:inline-block;padding:8px 12px;border-radius:10px;background:#fff;border:1px solid #c9d7eb;color:var(--navy);text-decoration:none;font-size:14px}
+.offscreen{position:fixed;left:-9999px;top:0}
+.v213-card{max-width:none}
+.v213-map{padding:6px 12px!important;font-size:15px!important}
+/* v2.1.6 */
+.results .r-top{display:flex;align-items:baseline;gap:6px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px}
+.chip{display:inline-block;padding:1px 8px;border-radius:999px;background:#eef3fa;color:#2a4466;font-size:12.5px;font-weight:600}
+.chip.st{background:#10294B;color:#fff}
+.results .track{color:#10294b;font-size:14px;background:#fff8e6;border-radius:8px;padding:4px 8px;margin-top:4px}
+.files{display:block!important}
+.files-title{display:block;margin-bottom:6px}
+.file-row{display:flex;align-items:center;gap:8px;padding:8px 10px;margin-bottom:6px;background:#fff;border:1px solid #d7e2f1;border-radius:12px}
+.file-row span{flex:1;font-weight:700}
+.file-row button,.file-row a{min-height:38px;padding:4px 12px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center}
+.file-row button{background:#185FA5;color:#fff;border:0}
+.file-row a{background:#fff;color:#10294B;border:1px solid #c9d7eb}
+.viewer-bar{position:sticky;top:52px;z-index:4;display:flex;align-items:center;gap:8px;padding:8px 0;background:var(--bg)}
+.viewer-bar b{flex:1;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer-bar .back{margin:0}
+.viewer-bar .dl{min-height:40px;padding:6px 12px;border-radius:12px;background:#06C755;color:#fff;font-weight:700;text-decoration:none;display:inline-flex;align-items:center}
+.viewer-body{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #d7e2f1}
+.viewer-body img{display:block;width:100%;height:auto}
+.viewer-body iframe{display:block;width:100%;height:75vh;border:0}
+.viewer-open{display:block;margin:10px 2px;color:#185FA5}
+
+/* web */
+.bar .desk{color:#d9e4f5}
+button.wide{width:100%;margin-top:6px}
+button.link{background:none;color:#185FA5;border:0;min-height:0;padding:8px 0;font-weight:500;text-decoration:underline}
+#filters{margin:10px 0 0}
+#filters .chip{border:1px solid #c9d7eb;background:#fff;min-height:32px;padding:2px 10px;font-weight:600;color:#10294b;border-radius:999px}
+#filters .chip.on{background:#10294B;color:#fff;border-color:#10294B}
+.file-row button.ghost{background:#fff;color:#10294B;border:1px solid #c9d7eb}
+code{background:#eef3fa;padding:1px 6px;border-radius:6px}
