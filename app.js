@@ -45,10 +45,13 @@
   if(local){const r=await fetch(local+rel,{cache:'no-store'});if(!r.ok)throw Object.assign(Error('missing'),{status:r.status});return new Uint8Array(await r.arrayBuffer());}
   const at=await accessToken();if(!at)throw Object.assign(Error('login'),{status:401});
   const path=`${C.folder||'NEXUS-web'}/${rel}`.split('/').map(encodeURIComponent).join('/');
-  const meta=await fetch(`https://graph.microsoft.com/v1.0/me/drive/root:/${path}?$select=id,size,@microsoft.graph.downloadUrl`,{headers:{authorization:'Bearer '+at}});
+  // OneDrive ส่วนตัว: ถ้าใส่ $select จะไม่ส่ง downloadUrl มา จึงขอแบบเต็ม
+  const meta=await fetch(`https://graph.microsoft.com/v1.0/me/drive/root:/${path}`,{headers:{authorization:'Bearer '+at}});
   if(meta.status===401){SS.del('nx-at');throw Object.assign(Error('login'),{status:401});}
   if(!meta.ok)throw Object.assign(Error('missing'),{status:meta.status});
-  const url=(await meta.json())['@microsoft.graph.downloadUrl'];const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('download');return new Uint8Array(await r.arrayBuffer());
+  const j=await meta.json();const url=j['@microsoft.graph.downloadUrl']||j['@content.downloadUrl'];
+  const r=url?await fetch(url,{cache:'no-store'}):await fetch(`https://graph.microsoft.com/v1.0/me/drive/root:/${path}:/content`,{headers:{authorization:'Bearer '+at}});
+  if(!r.ok)throw Object.assign(Error('download '+r.status),{status:r.status===404?404:0});return new Uint8Array(await r.arrayBuffer());
  }
  // ---------- ถอดรหัส ----------
  let dek=null,index=null;
