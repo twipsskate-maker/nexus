@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; frame-src 'self' blob:; connect-src 'self' https: blob:; base-uri 'none'; form-action 'self'; object-src 'none'">
-<title>NEXUS ออนไลน์</title>
+<title>NEXUS · Investigation ภ.1</title>
 <link rel="icon" href="icon.jpg">
 <link rel="apple-touch-icon" href="icon.jpg">
 <link rel="manifest" href="manifest.webmanifest">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="bar"><span class="logo"><img src="icon.jpg" alt=""></span><div class="brand"><b>NEXUS <small>ฐานข้อมูลหมายจับ</small></b><i>จัดทำโดย จ.ส.ต.ขจรพงศ์ อินทร์ฉ่ำ</i></div><span id="stamp" class="desk"></span><button id="lock" type="button" hidden>ล็อก</button></header>
+<header class="bar"><span class="logo"><img src="icon.jpg" alt=""></span><div class="brand"><em>INVESTIGATION · ภ.1</em><b>NEXUS <small>ฐานข้อมูลหมายจับ</small></b><i>จัดทำโดย จ.ส.ต.ขจรพงศ์ อินทร์ฉ่ำ</i></div><button id="lock" type="button" hidden>ล็อก</button></header>
 <main>
  <section id="setup" class="panel" hidden>
   <h1>ยังไม่ได้ตั้งค่าเว็บ</h1>
@@ -39,7 +39,7 @@
  <section id="search" class="panel" hidden>
   <form id="searchForm" class="searchbox"><input id="q" type="search" placeholder="ค้นชื่อ / เลขบัตร / เลขหมาย / เบอร์" autocomplete="off"><button type="submit">ค้นหา</button></form>
   <div id="filters" class="chips"></div>
-  <p id="searchMsg" class="msg" aria-live="polite"></p>
+  <p class="msg"><span id="searchMsg" aria-live="polite"></span> <small id="stamp" class="stamp"></small></p>
   <ul id="results" class="results"></ul>
  </section>
  <section id="detail" class="panel" hidden>
@@ -51,8 +51,8 @@
   </div>
   <p id="pendNote" class="pend-note" hidden></p>
   <div id="edit" hidden></div>
-  <div id="files" class="files"></div>
   <div id="card"></div>
+  <div id="files" class="files"></div>
  </section>
  <div id="shareSheet" class="sheet" hidden>
   <div class="sheet-box" role="dialog" aria-label="ส่งต่อ LINE">
