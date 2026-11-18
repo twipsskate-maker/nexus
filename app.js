@@ -127,10 +127,23 @@
   if(q)list=list.filter(r=>r.k.includes(q)||(qd.length>=4&&r.k.includes(qd)));
   list=list.slice().sort((a,b)=>String(b.s.updated).localeCompare(String(a.s.updated)));
   $('#searchMsg').textContent=list.length?`พบ ${list.length} รายการ`+(list.length>80?' (แสดง 80 แรก)':''):'ไม่พบ';
-  $('#results').innerHTML=list.slice(0,80).map(r=>{const x=r.s;const files=(r.files||[]).filter(f=>f.fileId!==CARD_FILE);return `<li><button type="button" data-id="${esc(r.id)}">${r.p?`<img class="thumb" src="${esc(r.p)}" alt="">`:'<span class="thumb none">👤</span>'}<span class="r-body"><span class="r-top"><b>${esc(x.name)}</b>${x.age?` <small>อายุ ${esc(x.age)}</small>`:''}</span>
-   <span class="chips">${x.status?`<span class="chip st">${esc(x.status)}</span>`:''}${x.wanted?`<span class="chip">${esc(x.wanted)}</span>`:''}${x.province?`<span class="chip">📍 ${esc(x.province)}</span>`:''}${x.pin?'<span class="chip">🗺️ มีหมุด</span>':''}${files.length?`<span class="chip">📎 ${files.length}</span>`:''}${r.pend?'<span class="chip pend">⏳ รอเข้าคอม</span>':''}</span>
-   <span class="r-sub">${esc([x.warrant&&`หมาย ${x.warrant}`,x.charge,x.owner].filter(Boolean).join(' • '))}</span>${x.tracking?`<span class="track">📝 ${esc(x.tracking)}${x.trackingDate?` <small>(${esc(x.trackingDate)})</small>`:''}</span>`:''}</span></button></li>`;}).join('');
+  const shown=list.slice(0,80);
+  $('#results').innerHTML=shown.map(r=>{const x=r.s;const files=(r.files||[]).filter(f=>f.fileId!==CARD_FILE);
+   const hasW=files.some(f=>/^ไฟล์หมายจับ/.test(f.label)),has14=files.some(f=>/^ทร\.14/.test(f.label));
+   const yn=(l,ok)=>`<span class="chip ${ok?'yes':'no'}">${ok?'✓':'✗'} ${l}${ok?'มี':'ไม่มี'}</span>`;
+   const where=[x.sso&&['🏢','ประกันสังคม',x.sso],x.parcel&&['📦','พัสดุล่าสุด',x.parcel],x.health&&['🏥','สิทธิรักษา',x.health]].filter(Boolean);
+   if(!where.length&&x.area)where.push(['📍','คาดว่าอยู่',x.area]);
+   return `<li><button type="button" data-id="${esc(r.id)}">${r.p?`<img class="thumb" src="${esc(r.p)}" alt="">`:`<span class="thumb none" data-thumb="${esc(r.id)}">👤</span>`}<span class="r-body"><span class="r-top"><b>${esc(x.name)}</b>${x.age?` <small>อายุ ${esc(x.age)}</small>`:''}</span>
+   <span class="chips">${x.status?`<span class="chip st">${esc(x.status)}</span>`:''}${x.wanted?`<span class="chip">${esc(x.wanted)}</span>`:''}${yn('ไฟล์หมายจับ ',hasW)}${yn('ทร.14 ',has14)}${r.pend?'<span class="chip pend">⏳ รอเข้าคอม</span>':''}</span>
+   <span class="r-lines">${x.warrant?`<span><b>หมายจับเลขที่</b> ${esc(x.warrant)}</span>`:''}${x.charge?`<span><b>ข้อหา</b> ${esc(x.charge)}</span>`:''}${x.owner?`<span>🏛️ ${esc(x.owner)}</span>`:''}</span>
+   ${where.length?`<span class="where">${where.map(([i,l,v])=>`<span>${i} <b>${l}</b> ${esc(v)}</span>`).join('')}</span>`:''}</span></button></li>`;}).join('');
+  lazyThumbs(shown);
  }
+ // รูปในรายการ: ถ้าคอมยังไม่ได้ส่งรูปย่อ ให้ดึงรูปบุคคลจากไฟล์ในแฟ้มแทน
+ let thumbRun=0;const thumbUrl=new Map();
+ async function lazyThumbs(list){const run=++thumbRun;for(const r of list){if(run!==thumbRun)return;const el=document.querySelector(`[data-thumb="${CSS.escape(String(r.id))}"]`);if(!el)continue;
+  try{let u=thumbUrl.get(r.id);if(!u){const f=(r.files||[]).find(f=>/^รูปบุคคล/.test(f.label)&&/^image\//.test(f.type||''));if(!f)continue;u=await fileUrl(f);thumbUrl.set(r.id,u);}
+   if(run!==thumbRun)return;const img=new Image();img.className='thumb';img.alt='';img.src=u;el.replaceWith(img);}catch{}}}
  let current=null;
  const opt=(list,val)=>{const l=list.slice();if(val&&!l.includes(val))l.unshift(val);return l.map(x=>`<option ${x===val?'selected':''}>${esc(x)}</option>`).join('');};
  function renderEdit(){
