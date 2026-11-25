@@ -182,7 +182,7 @@
  function prepCard(){const f=cardFile();if(!f){cardPrep=Promise.resolve(null);return;}const id=current.id;cardPrep=fileBlob(f).then(b=>id===current?.id?new File([b],`NEXUS ${current.s.name}.jpg`.replace(/[\\/:*?"<>|]/g,' '),{type:'image/jpeg'}):null).catch(()=>null);}
  async function open(id){
   current=index.records.find(r=>r.id===id);if(!current)return;show('detail');window.scrollTo(0,0);
-  $('#card').innerHTML=current.html;
+  $('#card').innerHTML='<div class="nx-web-head"><img src="emblem.jpg" alt=""><div><div class="sys">NEXUS · WARRANT &amp; TARGET INTELLIGENCE</div><b>บุคคลเป้าหมายตามหมายจับ</b><span>กก.สส.3 บก.สส.ภ.1 · ข้อมูลเพื่อการสืบสวนและติดตามตัว</span></div></div>'+current.html;
   const files=(current.files||[]).filter(f=>f.fileId!==CARD_FILE);
   $('#files').innerHTML=files.length?'<b class="files-title">📎 ไฟล์ในแฟ้ม</b>'+files.map(f=>{const i=current.files.indexOf(f);return `<div class="file-row"><span>${esc(f.label)}</span><button type="button" data-view="${i}">👁 ดูไฟล์</button><button type="button" class="ghost" data-dl="${i}">⬇️ ดาวน์โหลด</button></div>`;}).join(''):'<p class="msg">ไม่มีไฟล์แนบในแฟ้มนี้</p>';
   const box=document.querySelector('[data-v213-photo]');
