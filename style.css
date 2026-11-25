@@ -110,3 +110,5 @@ code{background:#eef3fa;padding:1px 6px;border-radius:6px}
 .sheet-box .line{background:var(--line);width:100%}
 .sheet-box .line[disabled]{opacity:.6}
 .sheet-box .ghost{background:#fff;color:var(--navy);border:1px solid #c9d7eb}
+/* v2.2.1 หัวรายงานหน้าแฟ้ม */
+.nx-web-head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px 14px 0 0;background:linear-gradient(115deg,#0b1d3a,#132f5c);border-bottom:3px solid #38bdf8;color:#fff}.nx-web-head img{width:54px;height:54px;border-radius:50%;flex:none;object-fit:cover}.nx-web-head .sys{font-size:10.5px;font-weight:800;letter-spacing:1.5px;color:#38bdf8}.nx-web-head b{display:block;font-size:17px;color:#fff}.nx-web-head span{display:block;font-size:12px;color:#9fc3f5}.nx-web-head+.v213-card{border-top-left-radius:0;border-top-right-radius:0}
